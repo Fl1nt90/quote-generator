@@ -1,3 +1,5 @@
+const quoteContainer = document.getElementById('quote-container') //select by id/select id
+const spinner = document.querySelector('.spinner')
 const quoteBtn = document.getElementById('new-quote') //select by id/select id
 const tweetBtn = document.getElementById('twitter') 
 const quoteText = document.getElementById('quote');
@@ -6,18 +8,31 @@ const quoteAuthor = document.getElementById('author');
 let apiQuotes = []; //global variable where to ajax call response
 let randomQuoteRes = {} //store the random quote
 
+//LOADING SPINNER/RENDER SPINNER
+const showSpinner = function () {
+    quoteContainer.hidden = true;
+};
+showSpinner() //show the spinner while fetching
+
+const hideSpinner = function () {
+    quoteContainer.hidden = false;
+    spinner.hidden = true;
+};
+
 // Get quotes from API
 async function getQuotes() {
     const apiUrl = 'https://type.fit/api/quotes';
     try {
         const response = await fetch(apiUrl);
         apiQuotes = await response.json() //store the response into a global variable
+        if(!response.ok) throw new Error('cazzo') //throw an error in case of problem
     //immediately show a quote
+        hideSpinner(); //hide the spinner
         randomQuote();
     } catch (err) {
-        console.log(err);
-    }
-}
+        console.log(err.message);
+    };
+};
 //make the AJAX call at runtime
 getQuotes();
 
@@ -32,7 +47,6 @@ const randomQuote = function() {
         quoteText.classList.add('long-quote');
     } else {quoteText.classList.remove('long-quote');
     }
-
     quoteText.textContent = randomQuoteRes.text;
     quoteAuthor.textContent = (!randomQuoteRes.author) ? 'Unknown' : randomQuoteRes.author; //unknown author
 }

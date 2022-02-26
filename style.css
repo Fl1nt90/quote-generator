@@ -19,10 +19,27 @@ body {
   justify-content: center; /* horizontal */
 }
 
+/* LOADING SPINNER/RENDER SPINNER */
+.spinner {
+  border: 16px solid #813fe4; 
+  border-top: 16px solid #c05f10; 
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+
+
 /* STYLE the quote container */
 .quote-container {
   background-color:rgba(226, 107, 51, 0.5); /* use RGBA, where the ALPHA parameter is the opacity */
-  box-shadow: 0 10px 20px 10px rgba(226, 104, 22, 1); /* horizontal offset, vertical offset, blur, radius */
+  box-shadow: 10px 10px 20px 10px rgba(226, 104, 22, 1); /* horizontal offset, vertical offset, blur, radius */
   width: auto;
   max-width: 900px; /* set a maximum width of the quote box */
   padding: 20px 30px; /* automatically spaces out all the box elements (text, buttons etc) */
@@ -38,6 +55,7 @@ body {
 }
 
 .fas {
+  display: inline;  /* doing this to remove spaces between quote and icon, and prevent ui issue */
   font-size: 4rem;
 }
 
@@ -83,6 +101,10 @@ button:active { /* pressing button animation, combined with box-shadow */
 .twitter-button:hover { /* change color when pointer hover over the buttons */
   color: #1DA1F2; /* make the icon twitter-blue */
 }
+
+
+
+
 
 /* Media Query: Tablet or Smaller  NOTE: place at the bottom, to overwrite previous style */
 @media screen and (max-width: 1000px) {
