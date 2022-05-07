@@ -40,7 +40,6 @@ getQuotes();
 const randomQuote = function() {
     const randomIndex = Math.floor(Math.random() * apiQuotes.length);
     randomQuoteRes = apiQuotes[randomIndex]
-    console.log(randomIndex);
 //DOM manipulation 
     //conditionally add long quote class
     if (randomQuoteRes.text.length > 100) {
