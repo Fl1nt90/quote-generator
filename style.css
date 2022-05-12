@@ -40,8 +40,7 @@ body {
 .quote-container {
   background-color:rgba(226, 107, 51, 0.5); /* use RGBA, where the ALPHA parameter is the opacity */
   box-shadow: 10px 10px 20px 10px rgba(226, 104, 22, 1); /* horizontal offset, vertical offset, blur, radius */
-  width: auto;
-  max-width: 900px; /* set a maximum width of the quote box */
+  width: 85vw;
   padding: 20px 30px; /* automatically spaces out all the box elements (text, buttons etc) */
   border-radius: 10px;
 }
@@ -68,6 +67,8 @@ body {
 
 /* Style the Buttons */
 .button-container {
+  position: relative;
+  top: 10px;
   margin-top: 15px;
   display: flex;
   justify-content: space-between; /* in this way, buttons will be positioned at the horizontal margins */
@@ -84,6 +85,7 @@ button { /* NOTE: i don't target the class, but the elemets themselves */
   outline: none; 
   padding: 0.5% 1rem;
   box-shadow: 0 0.3rem rgba(206, 226, 22, 0.65);
+  user-select: none;
 }
 
 button:hover { /* change color when pointer hover over the buttons */
@@ -106,12 +108,13 @@ button:active { /* pressing button animation, combined with box-shadow */
 
 
 
+
 /* Media Query: Tablet or Smaller  NOTE: place at the bottom, to overwrite previous style */
 @media screen and (max-width: 1000px) {
   .quote-container {
     margin: auto 10px;
     background-color: rgba(206, 226, 22, 0.5);  
-}
+  }
 /* resize font on mobile device */
   .quote-text {
     font-size: 2.2rem; 
@@ -122,4 +125,31 @@ button:active { /* pressing button animation, combined with box-shadow */
   .fas {
     font-size: 3rem;
   }
+}
+
+@media screen and (max-height: 340px) and (max-width: 340px) {
+  button { 
+  font-size: 1rem;
+  height: 2rem;
+}
+  .button-container{
+  margin-top: 0px;
+  }
+/* resize font on mobile device */
+  .quote-text {
+    font-size: 1.5rem; 
+    line-height: 80%;
+  }
+  .long-quote { /* special class in case quote is very long. Will be triggered in JS */
+  font-size: 1.3rem;
+}
+  .quote-author  {
+    font-size: 1rem; 
+  }
+  .fas { /* the "...." */
+    font-size: 1.4rem; 
+  }
+  .fa-twitter {
+  font-size: 1rem; /* Make icon bigger */
+}
 }
